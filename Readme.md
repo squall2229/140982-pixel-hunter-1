@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Чечулин Владислав](https://up.htmlacademy.ru/ecmascript/2/user/140982).
-* Наставник: `Неизвестно`.
+* Наставник: [Игорь Дерябин](https://htmlacademy.ru/profile/id212247).
 
 ---
 
