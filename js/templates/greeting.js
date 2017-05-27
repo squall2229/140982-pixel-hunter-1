@@ -3,7 +3,8 @@ import changeTemplate from '../change-template';
 import rules from './rules';
 
 const greeting = getElementFromTemplates(`
-    <div class="greeting central--blur">
+    <div id="greeting">
+      <div class="greeting central--blur">
       <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
       <h1 class="greeting__asterisk">*</h1>
       <div class="greeting__challenge">
@@ -26,6 +27,7 @@ const greeting = getElementFromTemplates(`
         <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
       </div>
     </footer>
+    </div>
 `);
 
 const link = greeting.querySelector(`.greeting__continue`);

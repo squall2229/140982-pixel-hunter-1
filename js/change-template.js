@@ -1,5 +1,6 @@
+const container = document.getElementById(`main`);
+
 const changeTemplate = (template) => {
-  const container = document.getElementById(`main`);
   container.innerHTML = ``;
   container.appendChild(template);
 };

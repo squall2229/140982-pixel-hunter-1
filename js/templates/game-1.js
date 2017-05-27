@@ -61,28 +61,19 @@ const game1 = getElementFromTemplates(`
   </div>
 `);
 
-const inputsPhoto = game1.querySelectorAll(`.game__option:first-child .game__answer`);
-const inputsPaint = game1.querySelectorAll(`.game__option:last-child .game__answer`);
 const checkAnswer = {answer1: false, answer2: false};
+const form = game1.querySelector(`.game__content`);
 
-Array.from(inputsPhoto).forEach((input) => {
-  input.addEventListener(`click`, () => {
+form.addEventListener(`change`, (evt) => {
+  if (evt.target.name === `question1`) {
     checkAnswer.answer1 = true;
-
-    if (checkAnswer.answer1 && checkAnswer.answer2) {
-      changeTemplate(game2);
-    }
-  });
-});
-
-Array.from(inputsPaint).forEach((input) => {
-  input.addEventListener(`click`, () => {
+  } else if (evt.target.name === `question2`) {
     checkAnswer.answer2 = true;
+  }
 
-    if (checkAnswer.answer1 && checkAnswer.answer2) {
-      changeTemplate(game2);
-    }
-  });
+  if (checkAnswer.answer1 && checkAnswer.answer2) {
+    changeTemplate(game2);
+  }
 });
 
 const linkBack = game1.querySelector(`.header__back`);

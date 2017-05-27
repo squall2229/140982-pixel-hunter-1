@@ -4,7 +4,8 @@ import game1 from './game-1';
 import intro from './intro';
 
 const rules = getElementFromTemplates(`
-  <header class="header">
+  <div id="rules">
+    <header class="header">
     <div class="header__back">
       <span class="back">
         <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
@@ -38,12 +39,14 @@ const rules = getElementFromTemplates(`
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
   </footer>
+  </div>
 `);
 
 const input = rules.querySelector(`.rules__input`);
 const link = rules.querySelector(`.rules__button`);
+const form = rules.querySelector(`.rules__form`);
 
-link.addEventListener(`click`, (evt) => {
+form.addEventListener(`submit`, (evt) => {
   evt.preventDefault();
   changeTemplate(game1);
 });

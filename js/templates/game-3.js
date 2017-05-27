@@ -5,7 +5,8 @@ import intro from './intro';
 import stats from './stats';
 
 const game3 = getElementFromTemplates(`
-  ${header}
+  <div id="game-3">
+    ${header}
   <div class="game">
     <p class="game__task">Найдите рисунок среди изображений</p>
     <form class="game__content  game__content--triple">
@@ -44,6 +45,7 @@ const game3 = getElementFromTemplates(`
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
   </footer>
+  </div>
 `);
 
 const links = game3.querySelectorAll(`.game__option`);
