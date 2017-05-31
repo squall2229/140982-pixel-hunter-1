@@ -1,6 +1,7 @@
 import getElementFromTemplates from '../get-template';
 import changeTemplate from '../change-template';
 import greeting from './greeting';
+import data from '../data/greeting';
 
 export default (state) => {
   const intro = `
@@ -10,8 +11,10 @@ export default (state) => {
     </div>
   `;
 
-  return getElementFromTemplates(intro);
+  const element = getElementFromTemplates(intro);
 
-  // const link = intro.querySelector(`.intro__asterisk`);
-  // link.addEventListener(`click`, () => changeTemplate(greeting));
+  const link = element.querySelector(`.intro__asterisk`);
+  link.addEventListener(`click`, () => changeTemplate(greeting(data)));
+
+  return element;
 };

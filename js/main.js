@@ -1,5 +1,5 @@
 import changeTemplate from './change-template';
 import intro from './templates/intro';
-import {game} from './data/data';
+import data from './data/intro';
 
-changeTemplate(intro(game));
+changeTemplate(intro(data));
