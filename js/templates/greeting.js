@@ -2,6 +2,7 @@ import getElementFromTemplates from '../get-template';
 import changeTemplate from '../change-template';
 import rules from './rules';
 import footer from './footer';
+import data from '../data/rules';
 
 export default (state) => {
   const greeting = `
@@ -24,7 +25,7 @@ export default (state) => {
   const element = getElementFromTemplates(greeting);
 
   const link = element.querySelector(`.greeting__continue`);
-  link.addEventListener(`click`, () => changeTemplate(rules));
+  link.addEventListener(`click`, () => changeTemplate(rules(data)));
 
   return element;
 };
