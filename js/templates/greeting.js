@@ -2,9 +2,8 @@ import getElementFromTemplates from '../get-template';
 import changeTemplate from '../change-template';
 import rules from './rules';
 import footer from './footer';
-import data from '../data/rules';
 
-export default (state) => {
+export default () => {
   const greeting = `
     <div id="greeting">
       <div class="greeting central--blur">
@@ -13,8 +12,10 @@ export default (state) => {
       <div class="greeting__challenge">
         <h3>Лучшие художники-фотореалисты бросают&nbsp;тебе&nbsp;вызов!</h3>
         <p>Правила игры просты.<br>
-          ${state.map((element) => element).join(`<br>`)}
-        </p>
+          Нужно отличить рисунок&nbsp;от фотографии и сделать выбор.<br>
+          Задача кажется тривиальной, но не думай, что все так просто.<br>
+          Фотореализм обманчив и коварен.<br>
+          Помни, главное — смотреть очень внимательно.</p>
       </div>
       <div class="greeting__continue"><span><img src="img/arrow_right.svg" width="64" height="64" alt="Next"></span></div>
     </div>
@@ -25,7 +26,7 @@ export default (state) => {
   const element = getElementFromTemplates(greeting);
 
   const link = element.querySelector(`.greeting__continue`);
-  link.addEventListener(`click`, () => changeTemplate(rules(data)));
+  link.addEventListener(`click`, () => changeTemplate(rules()));
 
   return element;
 };

@@ -60,7 +60,7 @@ export default (state) => {
 
   const linkBack = element.querySelector(`.header__back`);
 
-  linkBack.addEventListener(`click`, () => changeTemplate(intro));
+  linkBack.addEventListener(`click`, () => changeTemplate(intro()));
 
   return element;
 };
