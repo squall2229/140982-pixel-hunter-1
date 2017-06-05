@@ -4,6 +4,7 @@ import changeTemplate from '../change-template';
 import intro from './intro';
 import stats from './stats';
 import data from '../data/stats';
+import resize from '../resize';
 
 export default (state) => {
   const statsTemplate = `
@@ -46,7 +47,6 @@ export default (state) => {
   `;
 
   const element = getElementFromTemplates(game3);
-
   const links = element.querySelectorAll(`.game__option`);
 
   Array.from(links).forEach((link) => {
@@ -56,6 +56,8 @@ export default (state) => {
   const linkBack = element.querySelector(`.header__back`);
 
   linkBack.addEventListener(`click`, () => changeTemplate(intro()));
+
+  resize(element, 304, 455, `http://i.imgur.com/DKR1HtB.jpg`, `https://k42.kn3.net/D2F0370D6.jpg`, `https://i.imgur.com/DiHM5Zb.jpg`);
 
   return element;
 };

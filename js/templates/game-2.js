@@ -3,8 +3,8 @@ import header from './header';
 import changeTemplate from '../change-template';
 import intro from './intro';
 import game3 from './game-3';
-// import data from '../data/game3';
 import data from '../data/game';
+import resize from '../resize';
 
 export default (state) => {
   const stats = `
@@ -60,6 +60,7 @@ export default (state) => {
   const linkBack = element.querySelector(`.header__back`);
 
   linkBack.addEventListener(`click`, () => changeTemplate(intro()));
+  resize(element, 705, 455, `https://i.imgur.com/DiHM5Zb.jpg`);
 
   return element;
 };

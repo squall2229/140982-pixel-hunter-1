@@ -3,8 +3,8 @@ import changeTemplate from '../change-template';
 import header from './header';
 import game2 from './game-2';
 import intro from './intro';
-// import data from '../data/game2';
 import data from '../data/game';
+import resize from '../resize';
 
 export default (state) => {
   const stats = `
@@ -55,7 +55,6 @@ export default (state) => {
     </div>`;
 
   const element = getElementFromTemplates(game1);
-
   const checkAnswer = {answer1: false, answer2: false};
   const form = element.querySelector(`.game__content`);
 
@@ -74,6 +73,8 @@ export default (state) => {
   const linkBack = element.querySelector(`.header__back`);
 
   linkBack.addEventListener(`click`, () => changeTemplate(intro()));
+
+  resize(element, 468, 458, `http://i.imgur.com/1KegWPz.jpg`, `https://k42.kn3.net/CF42609C8.jpg`);
 
   return element;
 };
