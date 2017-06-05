@@ -1,7 +1,6 @@
 import getElementFromTemplates from '../get-template';
 import changeTemplate from '../change-template';
 import rules from './rules';
-import footer from './footer';
 
 export default () => {
   const greeting = `
@@ -19,7 +18,6 @@ export default () => {
       </div>
       <div class="greeting__continue"><span><img src="img/arrow_right.svg" width="64" height="64" alt="Next"></span></div>
     </div>
-    ${footer}
   </div>
 `;
 

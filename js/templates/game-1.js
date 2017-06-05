@@ -3,8 +3,8 @@ import changeTemplate from '../change-template';
 import header from './header';
 import game2 from './game-2';
 import intro from './intro';
-import footer from './footer';
-import data from '../data/game2';
+// import data from '../data/game2';
+import data from '../data/game';
 
 export default (state) => {
   const stats = `
@@ -26,9 +26,9 @@ export default (state) => {
 
   const main = `
     <div class="game">
-      <p class="game__task">${state.task}</p>
+      <p class="game__task">${state.levels[0].task}</p>
       <form class="game__content">
-        ${state.answers.map((element, i) => {
+        ${state.levels[0].images.map((element, i) => {
           let count = i + 1;
           return (
             `<div class="game__option">
@@ -52,7 +52,6 @@ export default (state) => {
     <div id="game-1">
       ${header}
       ${main}
-      ${footer}
     </div>`;
 
   const element = getElementFromTemplates(game1);

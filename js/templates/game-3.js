@@ -3,7 +3,6 @@ import header from './header';
 import changeTemplate from '../change-template';
 import intro from './intro';
 import stats from './stats';
-import footer from './footer';
 import data from '../data/stats';
 
 export default (state) => {
@@ -25,9 +24,9 @@ export default (state) => {
 
   const main = `
     <div class="game">
-      <p class="game__task">${state.task}</p>
+      <p class="game__task">${state.levels[2].task}</p>
       <form class="game__content  game__content--triple">
-        ${state.answers.map((element, i) => {
+        ${state.levels[2].images.map((element, i) => {
           let count = i + 1;
           return (
             `<div class="game__option">
@@ -43,7 +42,6 @@ export default (state) => {
     <div id="game-3">
       ${header}
       ${main}
-      ${footer}
     </div>
   `;
 

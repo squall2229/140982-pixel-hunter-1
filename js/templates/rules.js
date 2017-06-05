@@ -2,8 +2,7 @@ import getElementFromTemplates from '../get-template';
 import changeTemplate from '../change-template';
 import game1 from './game-1';
 import intro from './intro';
-import footer from './footer';
-import data from '../data/game1';
+import data from '../data/game';
 import {back} from './header';
 
 export default () => {
@@ -30,9 +29,8 @@ export default () => {
       <input class="rules__input" type="text" placeholder="Ваше Имя">
       <button class="rules__button  continue" type="submit" disabled>Go!</button>
     </form>
-  </div>
-      ${footer}
     </div>
+  </div>
   `;
 
   const element = getElementFromTemplates(rules);

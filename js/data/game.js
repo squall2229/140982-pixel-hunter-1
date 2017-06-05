@@ -1,7 +1,7 @@
 const data = {
-  life: 3,
-  points: 0,
+  lives: 2,
   timer: 30,
+  points: 0,
   levels: [
     {
       task: `Угадайте для каждого изображения фото или рисунок?`,
@@ -24,12 +24,10 @@ const data = {
     {
       task: `Угадай, фото или рисунок?`,
       type: `game2`,
-      images: [
-        {
-          src: `https://i.imgur.com/DiHM5Zb.jpg`,
-          type: `photo`
-        }
-      ],
+      image: {
+        src: `https://i.imgur.com/DiHM5Zb.jpg`,
+        type: `photo`
+      },
       answer: `paint`,
     },
     {

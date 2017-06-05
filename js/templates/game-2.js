@@ -3,8 +3,8 @@ import header from './header';
 import changeTemplate from '../change-template';
 import intro from './intro';
 import game3 from './game-3';
-import footer from './footer';
-import data from '../data/game3';
+// import data from '../data/game3';
+import data from '../data/game';
 
 export default (state) => {
   const stats = `
@@ -25,10 +25,10 @@ export default (state) => {
 
   const main = `
     <div class="game">
-        <p class="game__task">${state.task}</p>
+        <p class="game__task">${state.levels[1].task}</p>
         <form class="game__content  game__content--wide">
           <div class="game__option">
-            <img src=${state.answer.src} alt="Option 1" width="705" height="455">
+            <img src=${state.levels[1].image.src} alt="Option 1" width="705" height="455">
             <label class="game__answer  game__answer--photo">
               <input name="question1" type="radio" value="photo">
               <span>Фото</span>
@@ -47,7 +47,6 @@ export default (state) => {
     <div id="game-2">
       ${header}
       ${main}
-      ${footer}
     </div>`;
 
   const element = getElementFromTemplates(game2);

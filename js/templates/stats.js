@@ -2,7 +2,6 @@ import getElementFromTemplates from '../get-template';
 import {back} from './header';
 import changeTemplate from '../change-template';
 import intro from './intro';
-import footer from './footer';
 
 export default (state) => {
   const stats = `
@@ -11,7 +10,7 @@ export default (state) => {
     ${back}
     </header>
     <div class="result">
-      <h1>Победа!</h1>
+      <h1>${state.result.win}</h1>
       <table class="result__table">
         <tr>
           <td class="result__number">1.</td>
@@ -110,7 +109,6 @@ export default (state) => {
         </tr>
       </table>
     </div>
-      ${footer}
     </div>
   `;
 
@@ -118,7 +116,7 @@ export default (state) => {
 
   const linkBack = element.querySelector(`.header__back`);
 
-  linkBack.addEventListener(`click`, () => changeTemplate(intro));
+  linkBack.addEventListener(`click`, () => changeTemplate(intro()));
 
   return element;
 };
