@@ -2,7 +2,8 @@ import getElementFromTemplates from '../get-template';
 import changeTemplate from '../change-template';
 import rules from './rules';
 
-const greeting = getElementFromTemplates(`
+export default () => {
+  const greeting = `
     <div id="greeting">
       <div class="greeting central--blur">
       <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
@@ -17,21 +18,14 @@ const greeting = getElementFromTemplates(`
       </div>
       <div class="greeting__continue"><span><img src="img/arrow_right.svg" width="64" height="64" alt="Next"></span></div>
     </div>
-    <footer class="footer">
-      <a href="https://htmlacademy.ru" class="social-link social-link--academy">HTML Academy</a>
-      <span class="footer__made-in">Сделано в <a href="https://htmlacademy.ru" class="footer__link">HTML Academy</a> &copy; 2016</span>
-      <div class="footer__social-links">
-        <a href="https://twitter.com/htmlacademy_ru" class="social-link  social-link--tw">Твиттер</a>
-        <a href="https://www.instagram.com/htmlacademy/" class="social-link  social-link--ins">Инстаграм</a>
-        <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
-        <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
-      </div>
-    </footer>
-    </div>
-`);
+  </div>
+`;
 
-const link = greeting.querySelector(`.greeting__continue`);
+  const element = getElementFromTemplates(greeting);
 
-link.addEventListener(`click`, () => changeTemplate(rules));
+  const link = element.querySelector(`.greeting__continue`);
+  link.addEventListener(`click`, () => changeTemplate(rules()));
 
-export default greeting;
+  return element;
+};
+

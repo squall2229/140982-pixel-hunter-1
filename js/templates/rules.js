@@ -2,18 +2,19 @@ import getElementFromTemplates from '../get-template';
 import changeTemplate from '../change-template';
 import game1 from './game-1';
 import intro from './intro';
+import data from '../data/game';
+import {back} from './header';
 
-const rules = getElementFromTemplates(`
-  <div id="rules">
+export default () => {
+  const header = `
     <header class="header">
-    <div class="header__back">
-      <span class="back">
-        <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-        <img src="img/logo_small.png" width="101" height="44">
-      </span>
-    </div>
-  </header>
-  <div class="rules">
+      ${back}
+    </header>`;
+
+  const rules = `
+    <div id="rules">
+      ${header}
+      <div class="rules">
     <h1 class="rules__title">Правила</h1>
     <p class="rules__description">Угадай 10 раз для каждого изображения фото <img
       src="img/photo_icon.png" width="16" height="16"> или рисунок <img
@@ -28,39 +29,31 @@ const rules = getElementFromTemplates(`
       <input class="rules__input" type="text" placeholder="Ваше Имя">
       <button class="rules__button  continue" type="submit" disabled>Go!</button>
     </form>
-  </div>
-  <footer class="footer">
-    <a href="https://htmlacademy.ru" class="social-link social-link--academy">HTML Academy</a>
-    <span class="footer__made-in">Сделано в <a href="https://htmlacademy.ru" class="footer__link">HTML Academy</a> &copy; 2016</span>
-    <div class="footer__social-links">
-      <a href="https://twitter.com/htmlacademy_ru" class="social-link  social-link--tw">Твиттер</a>
-      <a href="https://www.instagram.com/htmlacademy/" class="social-link  social-link--ins">Инстаграм</a>
-      <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
-      <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>
   </div>
-`);
+  `;
 
-const input = rules.querySelector(`.rules__input`);
-const link = rules.querySelector(`.rules__button`);
-const form = rules.querySelector(`.rules__form`);
+  const element = getElementFromTemplates(rules);
 
-form.addEventListener(`submit`, (evt) => {
-  evt.preventDefault();
-  changeTemplate(game1);
-});
+  const input = element.querySelector(`.rules__input`);
+  const link = element.querySelector(`.rules__button`);
+  const form = element.querySelector(`.rules__form`);
 
-input.addEventListener(`input`, (evt) => {
-  if (evt.target.value !== ``) {
-    link.removeAttribute(`disabled`);
-  } else {
-    link.setAttribute(`disabled`, `disabled`);
-  }
-});
+  form.addEventListener(`submit`, (evt) => {
+    evt.preventDefault();
+    changeTemplate(game1(data));
+  });
 
-const linkBack = rules.querySelector(`.header__back`);
+  input.addEventListener(`input`, (evt) => {
+    if (evt.target.value !== ``) {
+      link.removeAttribute(`disabled`);
+    } else {
+      link.setAttribute(`disabled`, `disabled`);
+    }
+  });
 
-linkBack.addEventListener(`click`, () => changeTemplate(intro));
+  const linkBack = element.querySelector(`.header__back`);
+  linkBack.addEventListener(`click`, () => changeTemplate(intro()));
 
-export default rules;
+  return element;
+};

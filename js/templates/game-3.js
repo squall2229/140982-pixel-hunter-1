@@ -3,23 +3,11 @@ import header from './header';
 import changeTemplate from '../change-template';
 import intro from './intro';
 import stats from './stats';
+import data from '../data/stats';
+import resize from '../resize';
 
-const game3 = getElementFromTemplates(`
-  <div id="game-3">
-    ${header}
-  <div class="game">
-    <p class="game__task">Найдите рисунок среди изображений</p>
-    <form class="game__content  game__content--triple">
-      <div class="game__option">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
-      </div>
-      <div class="game__option  game__option--selected">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
-      </div>
-      <div class="game__option">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
-      </div>
-    </form>
+export default (state) => {
+  const statsTemplate = `
     <div class="stats">
       <ul class="stats">
         <li class="stats__result stats__result--wrong"></li>
@@ -33,29 +21,43 @@ const game3 = getElementFromTemplates(`
         <li class="stats__result stats__result--fast"></li>
         <li class="stats__result stats__result--unknown"></li>
       </ul>
+    </div>`;
+
+  const main = `
+    <div class="game">
+      <p class="game__task">${state.levels[2].task}</p>
+      <form class="game__content  game__content--triple">
+        ${state.levels[2].images.map((element, i) => {
+          let count = i + 1;
+          return (
+            `<div class="game__option">
+              <img src=${element.src} alt="Option ${count}" width="304" height="455">
+            </div>`
+          );
+        }).join(``)}
+      </form>
+      ${statsTemplate}
+    </div>`;
+
+  const game3 = `
+    <div id="game-3">
+      ${header}
+      ${main}
     </div>
-  </div>
-  <footer class="footer">
-    <a href="https://htmlacademy.ru" class="social-link social-link--academy">HTML Academy</a>
-    <span class="footer__made-in">Сделано в <a href="https://htmlacademy.ru" class="footer__link">HTML Academy</a> &copy; 2016</span>
-    <div class="footer__social-links">
-      <a href="https://twitter.com/htmlacademy_ru" class="social-link  social-link--tw">Твиттер</a>
-      <a href="https://www.instagram.com/htmlacademy/" class="social-link  social-link--ins">Инстаграм</a>
-      <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
-      <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
-    </div>
-  </footer>
-  </div>
-`);
+  `;
 
-const links = game3.querySelectorAll(`.game__option`);
+  const element = getElementFromTemplates(game3);
+  const links = element.querySelectorAll(`.game__option`);
 
-Array.from(links).forEach((link) => {
-  link.addEventListener(`click`, () => changeTemplate(stats));
-});
+  Array.from(links).forEach((link) => {
+    link.addEventListener(`click`, () => changeTemplate(stats(data)));
+  });
 
-const linkBack = game3.querySelector(`.header__back`);
+  const linkBack = element.querySelector(`.header__back`);
 
-linkBack.addEventListener(`click`, () => changeTemplate(intro));
+  linkBack.addEventListener(`click`, () => changeTemplate(intro()));
 
-export default game3;
+  resize(element, 304, 455, `http://i.imgur.com/DKR1HtB.jpg`, `https://k42.kn3.net/D2F0370D6.jpg`, `https://i.imgur.com/DiHM5Zb.jpg`);
+
+  return element;
+};

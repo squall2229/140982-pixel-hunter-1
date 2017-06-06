@@ -3,13 +3,14 @@ import {back} from './header';
 import changeTemplate from '../change-template';
 import intro from './intro';
 
-const stats = getElementFromTemplates(`
-  <div id="stats">
+export default (state) => {
+  const stats = `
+    <div id="stats">
     <header class="header">
     ${back}
     </header>
     <div class="result">
-      <h1>Победа!</h1>
+      <h1>${state.result.win}</h1>
       <table class="result__table">
         <tr>
           <td class="result__number">1.</td>
@@ -108,21 +109,14 @@ const stats = getElementFromTemplates(`
         </tr>
       </table>
     </div>
-    <footer class="footer">
-      <a href="https://htmlacademy.ru" class="social-link social-link--academy">HTML Academy</a>
-      <span class="footer__made-in">Сделано в <a href="https://htmlacademy.ru" class="footer__link">HTML Academy</a> &copy; 2016</span>
-      <div class="footer__social-links">
-        <a href="https://twitter.com/htmlacademy_ru" class="social-link  social-link--tw">Твиттер</a>
-        <a href="https://www.instagram.com/htmlacademy/" class="social-link  social-link--ins">Инстаграм</a>
-        <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
-        <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
-      </div>
-    </footer>
-  </div>
-`);
+    </div>
+  `;
 
-const linkBack = stats.querySelector(`.header__back`);
+  const element = getElementFromTemplates(stats);
 
-linkBack.addEventListener(`click`, () => changeTemplate(intro));
+  const linkBack = element.querySelector(`.header__back`);
 
-export default stats;
+  linkBack.addEventListener(`click`, () => changeTemplate(intro()));
+
+  return element;
+};
