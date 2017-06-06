@@ -13,7 +13,7 @@ const resize = (element, w, h, ...src) => {
         img.height = w / (width / height);
       } else {
         img.height = h;
-        img.width = w * (width / height);
+        img.width = h * (width / height);
       }
     };
   });
