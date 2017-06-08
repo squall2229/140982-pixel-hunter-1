@@ -3,7 +3,7 @@ import changeTemplate from '../change-template';
 import header from './header';
 import game2 from './game-2';
 import intro from './intro';
-import data from '../data/game';
+import data from '../data/game-2';
 import resize from '../resize';
 
 export default (state) => {
@@ -26,9 +26,9 @@ export default (state) => {
 
   const main = `
     <div class="game">
-      <p class="game__task">${state.levels[0].task}</p>
+      <p class="game__task">${state.task}</p>
       <form class="game__content">
-        ${state.levels[0].images.map((element, i) => {
+        ${state.images.map((element, i) => {
           let count = i + 1;
           return (
             `<div class="game__option">

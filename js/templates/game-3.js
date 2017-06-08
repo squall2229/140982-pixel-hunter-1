@@ -25,9 +25,9 @@ export default (state) => {
 
   const main = `
     <div class="game">
-      <p class="game__task">${state.levels[2].task}</p>
+      <p class="game__task">${state.task}</p>
       <form class="game__content  game__content--triple">
-        ${state.levels[2].images.map((element, i) => {
+        ${state.images.map((element, i) => {
           let count = i + 1;
           return (
             `<div class="game__option">
