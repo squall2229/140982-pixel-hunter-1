@@ -15,7 +15,12 @@ const data = {
       type: `photo`
     }
   ],
-  answer: `photo`
+  answer: 1
+};
+
+export const checkAnswer = (state, answer) => {
+  const newState = Object.assign({}, state);
+  return newState;
 };
 
 export default data;

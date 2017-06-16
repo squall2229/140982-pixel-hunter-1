@@ -6,4 +6,9 @@ const data = {
   history: []
 };
 
+export const checkStats = (state) => {
+  const newState = Object.assign({}, state);
+  return newState;
+};
+
 export default data;

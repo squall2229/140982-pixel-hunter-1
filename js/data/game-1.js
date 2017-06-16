@@ -17,4 +17,9 @@ const data = {
   }
 };
 
+export const checkAnswer = (state, answer) => {
+  const newState = Object.assign({}, state);
+  return newState;
+};
+
 export default data;

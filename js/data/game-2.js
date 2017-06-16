@@ -8,4 +8,14 @@ const data = {
   answer: `paint`,
 };
 
+export const checkAnswer = (state, answer) => {
+  const newState = Object.assign({}, state);
+
+  if (answer.time > 30) {
+    newState.lives = newState.lives - 1;
+  }
+
+  return newState;
+};
+
 export default data;
