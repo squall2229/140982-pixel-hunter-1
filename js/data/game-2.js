@@ -4,8 +4,7 @@ const data = {
   image: {
     src: `https://i.imgur.com/DiHM5Zb.jpg`,
     type: `photo`
-  },
-  answer: `paint`,
+  }
 };
 
 export const checkAnswer = (state, answer) => {

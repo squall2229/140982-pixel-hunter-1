@@ -3,15 +3,28 @@ const data = {
   timer: 30,
   points: 0,
   levels: 10,
-  achivements: {
-    bonus: {
-      speed: 0,
-      lifeBonus: 0
+  statistic: [
+    {
+      time: 10,
+      result: true,
+      achivements: `slow`
     },
-    punish: {
-      slow: ``
+    {
+      time: 20,
+      result: false,
+      achivements: null
+    },
+    {
+      time: 30,
+      result: true,
+      achivements: null
+    },
+    {
+      time: 30,
+      result: true,
+      achivements: `fast`
     }
-  }
+  ]
 };
 
 export default data;

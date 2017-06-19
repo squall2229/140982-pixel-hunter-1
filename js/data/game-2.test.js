@@ -3,6 +3,11 @@ import game from './game';
 import game2, {checkAnswer} from './game-2';
 
 describe(`game`, () => {
+  it(`check true answer`, () => {
+    assert.equal(checkAnswer(game2, {answer: `photo`}).level, 3);
+    assert.notEqual(checkAnswer(game2, {answer: `photo`}).lives, 1);
+  });
+
   it(`check answer time`, () => {
     assert.equal(checkAnswer(game, {time: 31}).lives, 2);
     assert.equal(checkAnswer(game, {time: 20}).lives, 3);
@@ -13,13 +18,9 @@ describe(`game`, () => {
     assert.equal(checkAnswer(game, {time: 22}).achivement, `slow`);
   });
 
-  it(`check true-false answer`, () => {
-    assert.equal(checkAnswer(game, {answer: `paint`}).answer, game2.answer);
-  });
-
   it(`to next level`, () => {
     assert.equal(checkAnswer(game, {level: 1}).level, 2);
-    assert.equal(checkAnswer(game, {level: 10}).level, 1);
+    assert.equal(checkAnswer(game, {level: 10}).level, `stats`);
   });
 
   it(`check add points after answer`, () => {

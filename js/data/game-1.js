@@ -10,11 +10,7 @@ const data = {
       src: `https://k42.kn3.net/CF42609C8.jpg`,
       type: `paint`
     }
-  ],
-  answers: {
-    answer1: `photo`,
-    answer2: `paint`
-  }
+  ]
 };
 
 export const checkAnswer = (state, answer) => {
