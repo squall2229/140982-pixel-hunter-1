@@ -4,7 +4,9 @@ import changeTemplate from '../change-template';
 import intro from './intro';
 import stats from './stats';
 import data from '../data/stats';
+import mainData from '../data/game';
 import resize from '../resize';
+import timer from '../timer';
 
 export default (state) => {
   const statsTemplate = `
@@ -48,6 +50,9 @@ export default (state) => {
 
   const element = getElementFromTemplates(game3);
   const links = element.querySelectorAll(`.game__option`);
+  const gameTimer = element.querySelector(`.game__timer`);
+
+  timer(mainData.timer, gameTimer);
 
   Array.from(links).forEach((link) => {
     link.addEventListener(`click`, () => changeTemplate(stats(data)));

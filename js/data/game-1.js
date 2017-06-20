@@ -8,14 +8,29 @@ const data = {
     },
     {
       src: `https://k42.kn3.net/CF42609C8.jpg`,
-      type: `paint`
+      type: `photo`
     }
   ]
 };
 
-export const checkAnswer = (state, answer) => {
+export const checkAnswer = (mainState, state, answer, time) => {
   const newState = Object.assign({}, state);
-  return newState;
+
+  if (answer.answer1 === newState.images[0].type && answer.answer2 === newState.images[1].type) {
+    const userAnswer = {
+      result: true,
+      time
+    };
+
+    return mainState.statistic.push(userAnswer);
+  } else {
+    const userAnswer = {
+      result: false,
+      time
+    };
+
+    return mainState.statistic.push(userAnswer);
+  }
 };
 
 export default data;

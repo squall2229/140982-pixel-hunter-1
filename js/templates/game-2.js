@@ -5,6 +5,8 @@ import intro from './intro';
 import game3 from './game-3';
 import data from '../data/game-3';
 import resize from '../resize';
+import mainData from '../data/game';
+import timer from '../timer';
 
 export default (state) => {
   const stats = `
@@ -50,8 +52,10 @@ export default (state) => {
     </div>`;
 
   const element = getElementFromTemplates(game2);
-
   const links = element.querySelectorAll(`.game__answer`);
+  const gameTimer = element.querySelector(`.game__timer`);
+
+  timer(mainData.timer, gameTimer);
 
   Array.from(links).forEach((link) => {
     link.addEventListener(`click`, () => changeTemplate(game3(data)));
