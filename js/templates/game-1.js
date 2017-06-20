@@ -67,15 +67,20 @@ export default (state) => {
 
   form.addEventListener(`change`, (evt) => {
     if (evt.target.name === `question1`) {
+
       checkAnswer.answer1 = true;
       answers.answer1 = evt.target.value;
+
     } else if (evt.target.name === `question2`) {
+
       checkAnswer.answer2 = true;
       answers.answer2 = evt.target.value;
+
     }
 
     if (checkAnswer.answer1 && checkAnswer.answer2) {
-      changeState(mainData, dataGame1, answers, gameTimer.textContent);
+      answers.timer = gameTimer.textContent;
+      changeState(mainData, dataGame1, answers);
       changeTemplate(game2(data));
     }
   });

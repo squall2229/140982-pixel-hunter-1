@@ -13,23 +13,41 @@ const data = {
   ]
 };
 
-export const checkAnswer = (mainState, state, answer, time) => {
-  const newState = Object.assign({}, state);
+export const checkAnswer = (mainState, state, answers) => {
 
-  if (answer.answer1 === newState.images[0].type && answer.answer2 === newState.images[1].type) {
+  const {answer1, answer2, timer} = answers;
+  const [{type: type1}, {type: type2}] = state.images;
+
+  const getAchivement = () => {
+    if (timer > 20) {
+      return `fast`;
+    } else if (timer < 10) {
+      return `slow`;
+    } else {
+      return null;
+    }
+  };
+
+  if (answer1 === type1 && answer2 === type2) {
     const userAnswer = {
       result: true,
-      time
+      achivement: getAchivement()
     };
 
-    return mainState.statistic.push(userAnswer);
+    mainState.statistic.push(userAnswer);
+
+    return mainState;
+
   } else {
+
     const userAnswer = {
-      result: false,
-      time
+      result: false
     };
 
-    return mainState.statistic.push(userAnswer);
+    mainState.statistic.push(userAnswer);
+    mainState.lives -= 1;
+
+    return mainState;
   }
 };
 
