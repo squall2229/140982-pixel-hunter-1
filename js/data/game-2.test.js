@@ -1,41 +1,62 @@
-// import assert from 'assert';
-// import game from './game';
-// import game2, {checkAnswer} from './game-2';
+import assert from 'assert';
+import game from './game';
+import game2, {checkAnswer} from './game-2';
 
-// describe(`game`, () => {
-//   it(`check true answer`, () => {
-//     assert.equal(checkAnswer(game2, {answer: `photo`}).level, 3);
-//     assert.notEqual(checkAnswer(game2, {answer: `photo`}).lives, 1);
-//   });
+describe(`game`, () => {
+  describe(`true false answer`, () => {
+    const trueAnswer = {answer: `photo`, timer: 10};
+    const failAnswer = {answer: `paint`, timer: 10};
 
-//   it(`check answer time`, () => {
-//     assert.equal(checkAnswer(game, {time: 31}).lives, 2);
-//     assert.equal(checkAnswer(game, {time: 20}).lives, 3);
-//   });
+    it(`true`, () => {
+      const newState = Object.assign({}, game);
+      assert.equal(checkAnswer(newState, game2, trueAnswer).lives, 3);
+    });
 
-//   it(`add achivements`, () => {
-//     assert.equal(checkAnswer(game, {time: 9}).achivement, `fast`);
-//     assert.equal(checkAnswer(game, {time: 22}).achivement, `slow`);
-//   });
+    it(`false`, () => {
+      const newState = Object.assign({}, game);
+      assert.equal(checkAnswer(newState, game2, failAnswer).lives, 2);
+    });
+  });
 
-//   it(`to next level`, () => {
-//     assert.equal(checkAnswer(game, {level: 1}).level, 2);
-//     assert.equal(checkAnswer(game, {level: 10}).level, `stats`);
-//   });
+  describe(`achivement`, () => {
+    const fastAnswer = {answer: `photo`, timer: 22};
+    const slowAnswer = {answer: `photo`, timer: 8};
+    const normalAnswer = {answer: `photo`, timer: 12};
 
-//   it(`check add points after answer`, () => {
-//     assert.equal(checkAnswer(game, {point: 0}).point, 100);
-//   });
+    it(`add fast`, () => {
+      const newState = Object.assign({}, game, {statistic: []});
+      assert.equal(checkAnswer(newState, game2, fastAnswer).statistic[0].achivement, `fast`);
+    });
 
-//   it(`check add points after true fast answer`, () => {
-//     assert.equal(checkAnswer(game, {point: 0}).point, 150);
-//   });
+    it(`add slow`, () => {
+      const newState = Object.assign({}, game, {statistic: []});
+      assert.equal(checkAnswer(newState, game2, slowAnswer).statistic[0].achivement, `slow`);
+    });
 
-//   it(`check add points after true slow answer`, () => {
-//     assert.equal(checkAnswer(game, {point: 100}).point, 100);
-//   });
+    it(`no achivement`, () => {
+      const newState = Object.assign({}, game, {statistic: []});
+      assert.equal(checkAnswer(newState, game2, normalAnswer).statistic[0].achivement, null);
+    });
+  });
 
-//   it(`check lives points`, () => {
-//     assert.equal(checkAnswer(game, {lives: 2, point: 0}).point, 100);
-//   });
-// });
+  describe(`points`, () => {
+    const fastAnswer = {answer: `photo`, timer: 22};
+    const slowAnswer = {answer: `photo`, timer: 8};
+    const normalAnswer = {answer: `photo`, timer: 12};
+
+    it(`add points for true answer`, () => {
+      const newState = Object.assign({}, game);
+      assert.equal(checkAnswer(newState, game2, normalAnswer).points, 100);
+    });
+
+    it(`add points for fast answer`, () => {
+      const newState = Object.assign({}, game);
+      assert.equal(checkAnswer(newState, game2, fastAnswer).points, 150);
+    });
+
+    it(`delete points for slow answer`, () => {
+      const newState = Object.assign({}, game);
+      assert.equal(checkAnswer(newState, game2, slowAnswer).points, 50);
+    });
+  });
+});

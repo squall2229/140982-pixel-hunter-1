@@ -1,3 +1,5 @@
+import getAnswerStats from './get-answer-stats';
+
 const data = {
   task: `Угадайте для каждого изображения фото или рисунок?`,
   type: `game1`,
@@ -18,21 +20,8 @@ export const checkAnswer = (mainState, state, answers) => {
   const {answer1, answer2, timer} = answers;
   const [{type: type1}, {type: type2}] = state.images;
 
-  const getAchivement = () => {
-    if (timer > 20) {
-      return `fast`;
-    } else if (timer < 10) {
-      return `slow`;
-    } else {
-      return null;
-    }
-  };
-
   if (answer1 === type1 && answer2 === type2) {
-    const userAnswer = {
-      result: true,
-      achivement: getAchivement()
-    };
+    const userAnswer = getAnswerStats(timer, mainState);
 
     mainState.statistic.push(userAnswer);
 

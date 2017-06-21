@@ -3,8 +3,9 @@ const data = {
   timer: 30,
   points: 0,
   levels: 10,
-  statistic: [
-  ]
+  statistic: [],
+  history: [],
+  result: ``
 };
 
 export default data;

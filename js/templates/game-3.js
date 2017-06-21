@@ -3,8 +3,8 @@ import header from './header';
 import changeTemplate from '../change-template';
 import intro from './intro';
 import stats from './stats';
-import data from '../data/stats';
 import mainData from '../data/game';
+import dataGame3, {checkAnswer as changeState} from '../data/game-3';
 import resize from '../resize';
 import timer from '../timer';
 
@@ -55,7 +55,9 @@ export default (state) => {
   timer(mainData.timer, gameTimer);
 
   Array.from(links).forEach((link) => {
-    link.addEventListener(`click`, () => changeTemplate(stats(data)));
+    const answerData = {answer: `photo`, timer: 20};
+    changeState(mainData, dataGame3, answerData);
+    link.addEventListener(`click`, () => changeTemplate(stats(mainData)));
   });
 
   const linkBack = element.querySelector(`.header__back`);

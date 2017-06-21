@@ -6,6 +6,7 @@ import game3 from './game-3';
 import data from '../data/game-3';
 import resize from '../resize';
 import mainData from '../data/game';
+import dataGame2, {checkAnswer as changeState} from '../data/game-2';
 import timer from '../timer';
 
 export default (state) => {
@@ -58,6 +59,8 @@ export default (state) => {
   timer(mainData.timer, gameTimer);
 
   Array.from(links).forEach((link) => {
+    const answerData = {answer: `paint`, timer: 20};
+    changeState(mainData, dataGame2, answerData);
     link.addEventListener(`click`, () => changeTemplate(game3(data)));
   });
 

@@ -1,3 +1,5 @@
+import getAnswerStats from './get-answer-stats';
+
 const data = {
   task: `Найдите рисунок среди изображений`,
   type: `game3`,
@@ -14,13 +16,31 @@ const data = {
       src: `https://i.imgur.com/DiHM5Zb.jpg`,
       type: `photo`
     }
-  ],
-  answer: 1
+  ]
 };
 
-export const checkAnswer = (state, answer) => {
-  const newState = Object.assign({}, state);
-  return newState;
-};
+export const checkAnswer = (mainState, state, answerData) => {
 
+  const {answer, timer} = answerData;
+  const {type} = state.images[1];
+
+  if (answer === type) {
+    const userAnswer = getAnswerStats(timer, mainState);
+
+    mainState.statistic.push(userAnswer);
+
+    return mainState;
+
+  } else {
+
+    const userAnswer = {
+      result: false
+    };
+
+    mainState.statistic.push(userAnswer);
+    mainState.lives -= 1;
+
+    return mainState;
+  }
+};
 export default data;
