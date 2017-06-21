@@ -35,11 +35,11 @@ describe(`all stats`, () => {
     assert.equal(checkStats(newState, stats).bonusFast, 150);
   });
 
-  it(`fast points`, () => {
+  it(`slow points`, () => {
     const newState = Object.assign({}, game);
     newState.statistic = statistic;
 
-    assert.equal(checkStats(newState, stats).bonusFast, 150);
+    assert.equal(checkStats(newState, stats).bonusSlow, 150);
   });
 
   it(`result win`, () => {
