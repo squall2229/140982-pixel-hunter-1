@@ -2,7 +2,7 @@ import getElementFromTemplates from '../get-template';
 import changeTemplate from '../change-template';
 import game1 from './game-1';
 import intro from './intro';
-import data from '../data/game';
+import data from '../data/game-1';
 import {back} from './header';
 
 export default () => {

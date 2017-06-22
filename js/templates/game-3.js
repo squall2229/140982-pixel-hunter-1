@@ -3,8 +3,10 @@ import header from './header';
 import changeTemplate from '../change-template';
 import intro from './intro';
 import stats from './stats';
-import data from '../data/stats';
+import mainData from '../data/game';
+import dataGame3, {checkAnswer as changeState} from '../data/game-3';
 import resize from '../resize';
+import timer from '../timer';
 
 export default (state) => {
   const statsTemplate = `
@@ -25,9 +27,9 @@ export default (state) => {
 
   const main = `
     <div class="game">
-      <p class="game__task">${state.levels[2].task}</p>
+      <p class="game__task">${state.task}</p>
       <form class="game__content  game__content--triple">
-        ${state.levels[2].images.map((element, i) => {
+        ${state.images.map((element, i) => {
           let count = i + 1;
           return (
             `<div class="game__option">
@@ -48,9 +50,14 @@ export default (state) => {
 
   const element = getElementFromTemplates(game3);
   const links = element.querySelectorAll(`.game__option`);
+  const gameTimer = element.querySelector(`.game__timer`);
+
+  timer(mainData.timer, gameTimer);
 
   Array.from(links).forEach((link) => {
-    link.addEventListener(`click`, () => changeTemplate(stats(data)));
+    const answerData = {answer: `photo`, timer: 20};
+    changeState(mainData, dataGame3, answerData);
+    link.addEventListener(`click`, () => changeTemplate(stats(mainData)));
   });
 
   const linkBack = element.querySelector(`.header__back`);

@@ -3,8 +3,11 @@ import header from './header';
 import changeTemplate from '../change-template';
 import intro from './intro';
 import game3 from './game-3';
-import data from '../data/game';
+import data from '../data/game-3';
 import resize from '../resize';
+import mainData from '../data/game';
+import dataGame2, {checkAnswer as changeState} from '../data/game-2';
+import timer from '../timer';
 
 export default (state) => {
   const stats = `
@@ -25,10 +28,10 @@ export default (state) => {
 
   const main = `
     <div class="game">
-        <p class="game__task">${state.levels[1].task}</p>
+        <p class="game__task">${state.task}</p>
         <form class="game__content  game__content--wide">
           <div class="game__option">
-            <img src=${state.levels[1].image.src} alt="Option 1" width="705" height="455">
+            <img src=${state.image.src} alt="Option 1" width="705" height="455">
             <label class="game__answer  game__answer--photo">
               <input name="question1" type="radio" value="photo">
               <span>Фото</span>
@@ -50,10 +53,14 @@ export default (state) => {
     </div>`;
 
   const element = getElementFromTemplates(game2);
-
   const links = element.querySelectorAll(`.game__answer`);
+  const gameTimer = element.querySelector(`.game__timer`);
+
+  timer(mainData.timer, gameTimer);
 
   Array.from(links).forEach((link) => {
+    const answerData = {answer: `paint`, timer: 20};
+    changeState(mainData, dataGame2, answerData);
     link.addEventListener(`click`, () => changeTemplate(game3(data)));
   });
 

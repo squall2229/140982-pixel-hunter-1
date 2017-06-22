@@ -52,7 +52,7 @@ gulp.task('test', function () {
     .src(['js/**/*.test.js'], { read: false })
     .pipe(mocha({
       compilers: ['js:babel-core/register'],
-      reporter: 'spec'
+      reporter: 'nyan'
     }));
 });
 
