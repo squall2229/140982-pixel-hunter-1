@@ -93,7 +93,7 @@ class Game1 extends AbstractView {
     });
 
     const linkBack = this.element.querySelector(`.header__back`);
-    linkBack.addEventListener(`click`, this.back);
+    linkBack.addEventListener(`click`, this.back.bind(this));
 
     resize(this.element, 468, 458, `http://i.imgur.com/1KegWPz.jpg`, `https://k42.kn3.net/CF42609C8.jpg`);
     timer(this.game.timer, gameTimer);

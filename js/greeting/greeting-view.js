@@ -23,7 +23,7 @@ class GreetingView extends AbstractView {
 
   bind() {
     const link = this.element.querySelector(`.greeting__continue`);
-    link.addEventListener(`click`, this.changeLevel);
+    link.addEventListener(`click`, this.changeLevel.bind(this));
   }
 }
 

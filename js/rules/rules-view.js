@@ -52,7 +52,7 @@ class Rules extends AbstractView {
     });
 
     const linkBack = this.element.querySelector(`.header__back`);
-    linkBack.addEventListener(`click`, this.back);
+    linkBack.addEventListener(`click`, this.back.bind(this));
   }
 }
 

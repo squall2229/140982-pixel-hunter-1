@@ -62,12 +62,12 @@ class Game3 extends AbstractView {
     Array.from(links).forEach((link) => {
       // const answerData = {answer: `photo`, timer: 20};
       // changeState(mainData, dataGame3, answerData);
-      link.addEventListener(`click`, this.changeLevel);
+      link.addEventListener(`click`, this.changeLevel.bind(this));
     });
 
     const linkBack = this.element.querySelector(`.header__back`);
 
-    linkBack.addEventListener(`click`, this.back);
+    linkBack.addEventListener(`click`, this.back.bind(this));
 
     resize(this.element, 304, 455, `http://i.imgur.com/DKR1HtB.jpg`, `https://k42.kn3.net/D2F0370D6.jpg`, `https://i.imgur.com/DiHM5Zb.jpg`);
   }
