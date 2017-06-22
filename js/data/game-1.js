@@ -16,7 +16,6 @@ const data = {
 };
 
 export const checkAnswer = (mainState, state, answers) => {
-
   const {answer1, answer2, timer} = answers;
   const [{type: type1}, {type: type2}] = state.images;
 

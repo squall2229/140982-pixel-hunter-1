@@ -1,7 +1,7 @@
 import AbstractView from '../view';
 import {back} from '../templates/header';
 
-class GreetingView extends AbstractView {
+class Stats extends AbstractView {
   constructor(game) {
     super();
 
@@ -126,4 +126,4 @@ class GreetingView extends AbstractView {
   }
 }
 
-export default GreetingView;
+export default Stats;

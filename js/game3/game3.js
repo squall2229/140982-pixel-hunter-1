@@ -8,7 +8,9 @@ import stats from '../stats/stats';
 export default (state) => {
   const game3 = new Game3View(data, dataGame3);
 
-  game3.changeLevel = () => changeTemplate(stats());
+  game3.changeLevel = () => {
+    changeTemplate(stats());
+  };
 
   game3.back = () => changeTemplate(intro());
 

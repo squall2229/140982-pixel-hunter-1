@@ -1,7 +1,7 @@
 import AbstractView from '../view';
 import {back} from '../templates/header';
 
-class GreetingView extends AbstractView {
+class Rules extends AbstractView {
   get template() {
     const header = `
     <header class="header">
@@ -56,4 +56,4 @@ class GreetingView extends AbstractView {
   }
 }
 
-export default GreetingView;
+export default Rules;

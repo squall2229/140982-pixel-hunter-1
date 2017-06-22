@@ -3,7 +3,7 @@ import header from '../templates/header';
 import resize from '../resize';
 import timer from '../timer';
 
-class GreetingView extends AbstractView {
+class Game1 extends AbstractView {
   constructor(game, state) {
     super();
     this.game = game;
@@ -57,6 +57,10 @@ class GreetingView extends AbstractView {
             </div`;
   }
 
+  get answer() {
+    return this._answer;
+  }
+
   changeLevel() {}
 
   back() {}
@@ -83,6 +87,7 @@ class GreetingView extends AbstractView {
       if (checkAnswer.answer1 && checkAnswer.answer2) {
         answers.timer = gameTimer.textContent;
         // changeState(mainData, dataGame1, answers);
+        this._answer = answers;
         this.changeLevel();
       }
     });
@@ -95,4 +100,4 @@ class GreetingView extends AbstractView {
   }
 }
 
-export default GreetingView;
+export default Game1;

@@ -3,7 +3,7 @@ import header from '../templates/header';
 import resize from '../resize';
 import timer from '../timer';
 
-class GreetingView extends AbstractView {
+class Game2 extends AbstractView {
   constructor(game, state) {
     super();
     this.game = game;
@@ -53,21 +53,32 @@ class GreetingView extends AbstractView {
             </div>`;
   }
 
+  get answer() {
+    return this._answer;
+  }
+
   changeLevel() {}
 
   back() {}
 
   bind() {
-    const links = this.element.querySelectorAll(`.game__answer`);
+    // const links = this.element.querySelectorAll(`.game__answer`);
     const gameTimer = this.element.querySelector(`.game__timer`);
+    const form = this.element.querySelector(`.game__content`);
 
     timer(this.game.timer, gameTimer);
 
-    Array.from(links).forEach((link) => {
-      // const answerData = {answer: `paint`, timer: 20};
-      // changeState(mainData, dataGame2, answerData);
-      link.addEventListener(`click`, this.changeLevel);
+    form.addEventListener(`change`, (evt) => {
+      evt.preventDefault();
+      this._answer = {answer: evt.target.value};
+      this.changeLevel();
     });
+
+    // Array.from(links).forEach((link) => {
+    //   // const answerData = {answer: `paint`, timer: 20};
+    //   // changeState(mainData, dataGame2, answerData);
+    //   link.addEventListener(`click`, this.changeLevel);
+    // });
 
     const linkBack = this.element.querySelector(`.header__back`);
 
@@ -76,4 +87,4 @@ class GreetingView extends AbstractView {
   }
 }
 
-export default GreetingView;
+export default Game2;

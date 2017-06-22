@@ -3,7 +3,7 @@ import header from '../templates/header';
 import resize from '../resize';
 import timer from '../timer';
 
-class GreetingView extends AbstractView {
+class Game3 extends AbstractView {
   constructor(game, state) {
     super();
     this.game = game;
@@ -73,4 +73,4 @@ class GreetingView extends AbstractView {
   }
 }
 
-export default GreetingView;
+export default Game3;
