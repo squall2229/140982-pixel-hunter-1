@@ -2,7 +2,7 @@ const data = {
   lives: 3,
   timer: 30,
   points: 0,
-  levels: 10,
+  level: 1,
   statistic: [],
   history: [],
   result: ``
