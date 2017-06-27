@@ -1,16 +1,13 @@
-// import changeTemplate from './change-template';
-// import intro from './intro/intro';
-
-// changeTemplate(intro());
 import IntroScreen from './screens/intro-screen';
-import GreetingScreen from './screens/greeting-screen';
-import RulesScreen from './screens/rules-screen';
-import GameScreen from './screens/game-screen';
-import StatsScreen from './screens/stats-screen';
+// import GreetingScreen from './screens/greeting-screen';
+// import RulesScreen from './screens/rules-screen';
+// import GameScreen from './screens/game-screen';
+// import StatsScreen from './screens/stats-screen';
 
 export default class Application {
 
   static showWelcome() {
+    console.log('dsds');
     IntroScreen.init();
   }
 
@@ -29,6 +26,5 @@ export default class Application {
   // static showStats(state) {
   //   StatsScreen.init(state);
   // }
-}
 
-Application.showWelcome();
+}

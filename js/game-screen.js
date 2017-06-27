@@ -1,15 +1,41 @@
 import changeTemplate from './change-template';
-import IntroView from './intro/intro-view';
+import getElementFromTemplate from './get-template';
+import intro from './intro/intro';
 
 class GameScreen {
-  // constructor(view) {
-  //   this.view = view;
-  // }
+  constructor(state, view, gameData = {}) {
+    this.state = state;
+    this.gameData = gameData;
+    this.view = view;
+  }
+
+  get template() {
+    throw new Error(`You have to define template for view`);
+  }
+
+  get element() {
+    if (!this._element) {
+      this.getMarkup();
+    }
+
+    return this._element;
+  }
 
   init() {
-    const intro = new IntroView();
-    console.log(intro);
+    changeTemplate(intro());
+  }
+
+  render() {
+    return getElementFromTemplate(this.view);
+  }
+
+  bind() {}
+
+  getMarkup() {
+    this._element = this.render();
+    this.bind();
   }
 }
 
 export default GameScreen;
+
